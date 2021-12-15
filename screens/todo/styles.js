@@ -26,6 +26,11 @@ const styles= StyleSheet.create({
     shadowRadius: 4,
     elevation: 5
   },
+  postConatiner: {
+    width: 300,
+    height: 200,
+    flexDirection: "row"
+  }
 
 })
 export default styles;
