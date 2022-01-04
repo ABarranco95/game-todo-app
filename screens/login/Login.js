@@ -30,16 +30,16 @@ const Login = (props) => {
 
       
     return (
-        <View>
-            <TextInput 
+        <View style={styles.container}>
+            <TextInput style={styles.textInput}
             placeholder='Email'
             value={email}
             onChangeText={setEmail}
             
             />
 
-            
             <TextInput 
+            style={styles.textInput}
              placeholder='password'
              value={password}
              onChangeText={setPassword}
@@ -47,13 +47,17 @@ const Login = (props) => {
             
             
             />
-            <TouchableOpacity onPress={login}>
-                <Text>Login</Text>
+            
+
+            <TouchableOpacity style={styles.login} onPress={login}>
+                <Text style={styles.text}>Login</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={register}>
-                <Text>register</Text>
+            <TouchableOpacity style={styles.login} onPress={register}>
+                <Text style={styles.text}>register</Text>
             </TouchableOpacity>
-        </View>
+           
+            </View>
+            
     )
 }
 

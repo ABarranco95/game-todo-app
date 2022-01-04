@@ -9,7 +9,6 @@ import Profile from "./screens/profile/Profile"
 import Todo from "./screens/todo/Todo"
 import Home from "./screens/home/Home"
 
-
 import "./firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -17,7 +16,7 @@ const Stack = createNativeStackNavigator();
 
 function App() {
   const [userId, setUserId]= useState('');
-  const [allTasks, setAllTasks] = useState([])
+  const [allTasks, setAllTasks] = useState([]);
 
   const userAuth= getAuth();
 
@@ -33,7 +32,7 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Todo'>
+      <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen name="Login">
           {(props) => <Login {...props} userAuth={userAuth} userId={userId} />}
         </Stack.Screen>
