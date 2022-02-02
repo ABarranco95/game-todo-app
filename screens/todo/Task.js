@@ -29,33 +29,13 @@ const Task = ({ item, db, userId }) => {
   const [changeTodo, setChangeTodo] = useState("");
   const [check, setCheck] = useState(false);
 
-  // const handleEdit = (task, postId) => {
-  //   if (toggleEdit) {
-  //     if (changeTask !== "") {
-  //       updateTaskRef(changeTask, postId);
-  //       setToggleEdit(!toggleEdit);
-  //     } else {
-  //       setChangeTask(task);
-  //       setToggleEdit(!toggleEdit);
-  //     }
-  //   }
-  //   console.log("handle edit triggered");
-  // };
 
   // const completeTask = (index) => {
   //   let itemsCopy = [...taskItems];
   //   itemsCopy.splice(index, 1);
   //   setTaskItems(itemsCopy);
   // };
-  // const updateData = (task, check, postId) => {
-  //   const updateTaskRef = ref(db, "posts/" + props.userId + "/" + postId);
-
-  //   update(updateTaskRef, {
-  //     post: task,
-  //     completed: check,
-  //   });
-  //   props.navigation.navigate("Home");
-  // };
+ 
   const handleEdit = (task, id) => {
     if (toggleEdit) {
       if (changeTodo !== "") {
@@ -69,23 +49,24 @@ const Task = ({ item, db, userId }) => {
     }
   };
 
-  const updateData = () => {
+  const updateData = (changeTodo, postId) => {
+    console.log("updateData function hit");
     const updateTaskRef = ref(db, "posts/" + userId + "/" + postId);
 
     update(updateTaskRef, {
       post: changeTodo,
     });
   };
-  console.log(toggleEdit);
 
-  useEffect(() => {
-    console.log(toggleEdit);
-  }, []);
-
+  console.log("change to do ==> " + changeTodo);
   return (
     <View>
       {toggleEdit ? (
-        <TextInput value={changeTodo} onChangeText={setChangeTodo}></TextInput>
+        <TextInput
+          value={changeTodo}
+          onChangeText={setChangeTodo}
+          onBlur={() => handleEdit(item.post, item.postId)}
+        ></TextInput>
       ) : (
         <Pressable onPress={() => handleEdit(item.post, item.postId)}>
           <SafeAreaView style={styles.item}>
