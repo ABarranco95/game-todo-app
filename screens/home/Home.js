@@ -21,23 +21,23 @@ const Home = (props) => {
     return (
         <View style={styles.container}>
         <TouchableOpacity onPress={() => props.navigation.navigate("Profile") }>
-            <Text>Profile</Text>
+            <Text >Profile</Text>
         </TouchableOpacity>
         
         <TouchableOpacity onPress={() => props.navigation.navigate("Todo") }>
-            <Text>Add Todos</Text>
+            <Text >Add Todos</Text>
         </TouchableOpacity>
         
         <TouchableOpacity onPress={() => props.navigation.navigate("Profile") }>
-            <Text>View Todos</Text>
+            <Text >View Todos</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => props.navigation.navigate("Profile") }>
-            <Text>Completed Todos</Text>
+            <Text >Completed Todos</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={signOut}>
-            <Text>Sign Out</Text>
+            <Text >Sign Out</Text>
         </TouchableOpacity>
         </View>
         

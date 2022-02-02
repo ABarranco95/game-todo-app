@@ -7,6 +7,9 @@ import {
   Modal,
   Alert,
   FlatList,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
 } from "react-native";
 import styles from "./styles";
 import {
@@ -18,10 +21,11 @@ import {
   child,
   update,
 } from "firebase/database";
+import { CheckBox, Icon } from "react-native-elements";
 
 const Todo = (props) => {
   const [task, setTask] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  const [check, setCheck] = useState(false);
 
   const db = getDatabase();
   const postRef = ref(db, "posts/" + props.userId);
@@ -35,53 +39,51 @@ const Todo = (props) => {
       set(addToPostRef, {
         postId: addToPostRef.key,
         post: task,
+        completed: check,
       });
-      setShowModal(!showModal);
     } else {
       setNotRegisteredMessage(true);
     }
     setTask("");
   };
 
-  const cancelPost = () => {
-    setShowModal(!showModal);
-  };
+  // const handleCompleteTask = () => {
+  //   update(updateTaskRef)
+  // }
 
-  const Item = ({ item }) => {
+  const Task = ({ item }) => {
     const [toggleEdit, setToggleEdit] = useState(false);
     const [changeTask, setChangeTask] = useState("");
+    const [check, setCheck] = useState(false);
 
-    const handleEdit = (task, id) => {
-      if (toggleEdit) {
-        if (changeTask !== "") {
-          updateData(changeTask, id);
-          setToggleEdit(!toggleEdit);
-        }
-      } else {
-        setChangeTask(task);
-        setToggleEdit(!toggleEdit);
-      }
-    };
+    const handleEdit = (task, check) => {};
 
-    const updateData = (task, id) => {
-      const updateTaskRef = ref(db, "posts/" + props.userId + "/" + id);
+    // const completeTask = (index) => {
+    //   let itemsCopy = [...taskItems];
+    //   itemsCopy.splice(index, 1);
+    //   setTaskItems(itemsCopy);
+    // };
+    // const updateData = (task, check, postId) => {
+    //   const updateTaskRef = ref(db, "posts/" + props.userId + "/" + postId);
 
-      update(updateTaskRef, {
-        post: task,
-      });
-    };
+    //   update(updateTaskRef, {
+    //     post: task,
+    //     completed: check,
+    //   });
+    //   props.navigation.navigate("Home");
+    // };
 
     return (
-      <View style={styles.postContainer}>
-        {toggleEdit ? (
-          <TextInput value={changeTask} onChangeText={setChangeTask} />
-        ) : (
-          <Text>{item.post}</Text>
-        )}
-        <TouchableOpacity onPress={() => handleEdit(item.post, item.postId)}>
+      <SafeAreaView style={styles.item}>
+        <View style={styles.itemLeft}>
+          <View style={styles.square}></View>
+          <Text style={styles.itemText}>{item.post}</Text>
+        </View>
+        <TouchableOpacity onPress={() => handleEdit()}>
           <Text>Edit</Text>
         </TouchableOpacity>
-      </View>
+        <CheckBox center checked={check} onPress={() => setCheck(!check)} />
+      </SafeAreaView>
     );
   };
 
@@ -90,7 +92,9 @@ const Todo = (props) => {
       if (snapshot.val() !== null) {
         const returnedItems = snapshot.val();
         console.log("before result =>", returnedItems);
-        let result = Object.keys(returnedItems).map((key) => returnedItems[key]);
+        let result = Object.keys(returnedItems).map(
+          (key) => returnedItems[key]
+        );
         console.log("after result => ", result);
         props.setAllTasks(result);
       } else {
@@ -102,8 +106,25 @@ const Todo = (props) => {
   console.log("result of finished array =>", props.allTasks);
 
   return (
-    <View style={styles.container}>
-      <Modal
+    <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.writeTaskWrapper}
+      >
+        <TextInput
+          style={styles.input}
+          placeholder={"Write a task"}
+          value={task}
+          onChangeText={(text) => setTask(text)}
+        />
+
+        <TouchableOpacity onPress={() => addTask()}>
+          <View style={styles.addWrapper}>
+            <Text style={styles.addText}>+</Text>
+          </View>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
+      {/* <Modal
         animationType="slide"
         transparent={true}
         visible={showModal}
@@ -130,19 +151,19 @@ const Todo = (props) => {
             <Text style={{ color: "red" }}>Please add your todo.</Text>
           </View>
         ) : null}
-      </Modal>
+      </Modal> */}
 
-      <TouchableOpacity onPress={() => setShowModal(true)}>
+      {/* <TouchableOpacity onPress={() => setShowModal(true)}>
         <Text>Show Modal</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
-      <View style={{ width: 500, height: 500 }}>
+      <View style={{ width: 350, height: 600 }}>
         <FlatList
           data={props.allTasks}
-          renderItem={({ item }) => <Item item={item} />}
+          renderItem={({ item }) => <Task item={item} />}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

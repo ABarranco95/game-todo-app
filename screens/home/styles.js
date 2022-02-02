@@ -5,6 +5,16 @@ const styles= StyleSheet.create({
     flex:1,
     justifyContent:'center',
     alignItems:'center'
+  },
+  btnStyle:{
+    backgroundColor:'black',
+    color:'white',
+    borderRadius:10,
+    padding:10,
+    width:200,
+    textAlign:'center',
+    marginBottom:5
+
   }
 
 })
