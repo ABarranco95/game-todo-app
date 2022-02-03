@@ -3,9 +3,9 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
-    width: "70%",
+    justifyContent: "center",
+    alignItems: "center",
+    // width: "70%",
   },
   taskWrapper: {
     paddingTop: 80,
@@ -23,8 +23,9 @@ const styles = StyleSheet.create({
     bottom: 60,
     width: "100%",
     flexDirection: "row",
-    justifyContent: "space-around",
+    // justifyContent: "space-around",
     alignItems: "center",
+    marginLeft:630
   },
   input: {
     paddingVertical: 15,
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     borderColor: "#c0c0c0",
     borderWidth: 1,
-    width: 250,
+    width: 350,
   },
   addWrapper: {
     width: 60,
