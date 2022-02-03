@@ -23,11 +23,14 @@ import {
   update,
 } from "firebase/database";
 import { CheckBox, Icon } from "react-native-elements";
+
 import Task from "./Task";
 
 const Todo = (props) => {
+ 
   const [task, setTask] = useState("");
   const [check, setCheck] = useState(false);
+ 
 
   const db = getDatabase();
   const postRef = ref(db, "posts/" + props.userId);
@@ -62,9 +65,16 @@ const Todo = (props) => {
       }
     });
   }, []);
+  const handleKeypress = (e) => {
+    //it triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      addTask();
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
+      
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}
@@ -74,6 +84,7 @@ const Todo = (props) => {
           placeholder={"Write a task"}
           value={task}
           onChangeText={(text) => setTask(text)}
+          onKeyPress={handleKeypress}
         />
 
         <TouchableOpacity onPress={() => addTask()}>
@@ -83,7 +94,7 @@ const Todo = (props) => {
         </TouchableOpacity>
       </KeyboardAvoidingView>
 
-      <View style={{ width: 350, height: 600 }}>
+      <View style={{ width: 350, height: 450 }}>
         <FlatList
           data={props.allTasks}
           renderItem={({ item }) => (
