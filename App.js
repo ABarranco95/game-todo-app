@@ -18,6 +18,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   const [userId, setUserId] = useState("");
   const [allTasks, setAllTasks] = useState([]);
+  
 
   const userAuth = getAuth();
 

@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "70%",
+
   },
   taskWrapper: {
     paddingTop: 80,
@@ -25,7 +26,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-   
   },
   input: {
     paddingVertical: 15,
@@ -35,9 +35,8 @@ const styles = StyleSheet.create({
     borderColor: "#c0c0c0",
     borderWidth: 1,
     width: 300,
-    justifyContent:'center',
-    alignItems:'center'
- 
+    justifyContent: "center",
+    alignItems: "center",
   },
   addWrapper: {
     width: 55,
@@ -49,7 +48,7 @@ const styles = StyleSheet.create({
     borderColor: "#c0c0c0",
     borderWidth: 1,
   },
- 
+
   item: {
     backgroundColor: "#fff",
     padding: 15,
@@ -57,10 +56,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-   
-    marginBottom:10,
- 
-   
+
+    marginBottom: 10,
   },
   itemLeft: {
     flexDirection: "row",

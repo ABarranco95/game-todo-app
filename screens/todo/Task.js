@@ -35,7 +35,24 @@ const Task = ({ item, db, userId }) => {
   //   setTaskItems(itemsCopy);
   // };
 
+  // const updateDone = (check, id) => {
+  //   console.log("check is " + check);
+  //   if (check) {
+  //     updateCheck(check, id);
+  //   }
+  // };
+
+  const updateCheck = (id) => {
+    console.log("updateCheck function hit");
+    const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
+
+    update(updateTaskRef, {
+      completed: true,
+    });
+  };
+
   const handleEdit = (task, id) => {
+    console.log("handle edit triggered");
     if (toggleEdit) {
       if (changeTodo !== "") {
         updateData(changeTodo, id);
@@ -63,6 +80,7 @@ const Task = ({ item, db, userId }) => {
     remove(updateTaskRef);
   };
 
+  
 
   return (
     <View>
@@ -81,7 +99,11 @@ const Task = ({ item, db, userId }) => {
               <Text style={styles.itemText}>{item.post}</Text>
             </View>
 
-            <CheckBox center checked={check} onPress={() => setCheck(!check)} />
+            <CheckBox
+              center
+              checked={check}
+              onPress={() => updateCheck(item.postId)}
+            />
             <TouchableOpacity
               onPress={() => handleDelete(item.post, item.postId)}
             >
