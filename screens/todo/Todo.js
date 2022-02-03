@@ -21,16 +21,15 @@ import {
   push,
   child,
   update,
+  remove,
 } from "firebase/database";
 import { CheckBox, Icon } from "react-native-elements";
 
 import Task from "./Task";
 
 const Todo = (props) => {
- 
   const [task, setTask] = useState("");
   const [check, setCheck] = useState(false);
- 
 
   const db = getDatabase();
   const postRef = ref(db, "posts/" + props.userId);
@@ -74,7 +73,6 @@ const Todo = (props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}

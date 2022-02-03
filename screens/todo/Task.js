@@ -19,24 +19,22 @@ import {
   onValue,
   set,
   ref,
- 
   update,
+  remove,
 } from "firebase/database";
 import { CheckBox, Icon } from "react-native-elements";
 
 const Task = ({ item, db, userId }) => {
-  
   const [toggleEdit, setToggleEdit] = useState(false);
   const [changeTodo, setChangeTodo] = useState("");
   const [check, setCheck] = useState(false);
-
 
   // const completeTask = (index) => {
   //   let itemsCopy = [...taskItems];
   //   itemsCopy.splice(index, 1);
   //   setTaskItems(itemsCopy);
   // };
- 
+
   const handleEdit = (task, id) => {
     if (toggleEdit) {
       if (changeTodo !== "") {
@@ -59,14 +57,18 @@ const Task = ({ item, db, userId }) => {
     });
   };
 
-  console.log("change to do ==> " + changeTodo);
+  const handleDelete = (task, id) => {
+    console.log("Deleting task id -->" + id + "/" + task);
+    const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
+    remove(updateTaskRef);
+  };
+
+
   return (
-   
     <View>
-     
       {toggleEdit ? (
         <TextInput
-        style={styles.item}
+          style={styles.item}
           value={changeTodo}
           onChangeText={setChangeTodo}
           onBlur={() => handleEdit(item.post, item.postId)}
@@ -80,6 +82,11 @@ const Task = ({ item, db, userId }) => {
             </View>
 
             <CheckBox center checked={check} onPress={() => setCheck(!check)} />
+            <TouchableOpacity
+              onPress={() => handleDelete(item.post, item.postId)}
+            >
+              <Text>Delete</Text>
+            </TouchableOpacity>
           </SafeAreaView>
         </Pressable>
       )}
