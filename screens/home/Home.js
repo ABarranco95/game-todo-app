@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { getDatabase, onValue, set, ref } from "firebase/database";
+import DatePicker from "react-datepicker";
+  import "react-datepicker/dist/react-datepicker.css";
+
+
 import styles from "./styles";
 
+
 const Home = (props) => {
+  const [date, setDate] = useState(new Date());
+ 
   const db = getDatabase();
   const profileRef = ref(db, "profiles/" + props.userId);
 
@@ -16,21 +23,28 @@ const Home = (props) => {
   }, [props.userId]);
 
   return (
+    
     <View style={styles.container}>
+       <View>
+      <DatePicker
+        selected={date}
+        onChange={(date) => setDate(date)}
+        style={{width:200, zIndex:100, marginBottom:-50, position:'relative'}}
+      /></View> 
       <TouchableOpacity onPress={() => props.navigation.navigate("Profile")}>
-        <Text>Profile</Text>
+        <Text style={styles.btnStyle}>Profile</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => props.navigation.navigate("Todo")}>
-        <Text>Todos</Text>
+        <Text style={styles.btnStyle}>Todos</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => props.navigation.navigate("Profile")}>
-        <Text>Completed Todos</Text>
+      <TouchableOpacity onPress={() => props.navigation.navigate("Complete")}>
+        <Text style={styles.btnStyle}>Completed Todos</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={signOut}>
-        <Text>Sign Out</Text>
+        <Text style={styles.btnStyle}>Sign Out</Text>
       </TouchableOpacity>
     </View>
   );

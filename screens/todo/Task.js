@@ -12,19 +12,20 @@ import {
   SafeAreaView,
   Pressable,
 } from "react-native";
+
 import styles from "./styles";
 import {
   getDatabase,
   onValue,
   set,
   ref,
-  push,
-  child,
+ 
   update,
 } from "firebase/database";
 import { CheckBox, Icon } from "react-native-elements";
 
 const Task = ({ item, db, userId }) => {
+  
   const [toggleEdit, setToggleEdit] = useState(false);
   const [changeTodo, setChangeTodo] = useState("");
   const [check, setCheck] = useState(false);
@@ -60,9 +61,12 @@ const Task = ({ item, db, userId }) => {
 
   console.log("change to do ==> " + changeTodo);
   return (
+   
     <View>
+     
       {toggleEdit ? (
         <TextInput
+        style={styles.item}
           value={changeTodo}
           onChangeText={setChangeTodo}
           onBlur={() => handleEdit(item.post, item.postId)}

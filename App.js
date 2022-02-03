@@ -8,6 +8,7 @@ import Login from "./screens/login/Login";
 import Profile from "./screens/profile/Profile";
 import Todo from "./screens/todo/Todo";
 import Home from "./screens/home/Home";
+import Complete from "./screens/complete/Complete"
 
 import "./firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -33,6 +34,11 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen name="Complete">
+          {(props) => (
+            <Complete {...props} userAuth={userAuth} userId={userId} />
+          )}
+        </Stack.Screen>
         <Stack.Screen name="Login">
           {(props) => <Login {...props} userAuth={userAuth} userId={userId} />}
         </Stack.Screen>
@@ -44,7 +50,7 @@ function App() {
             <Profile {...props} userAuth={userAuth} userId={userId} />
           )}
         </Stack.Screen>
-        <Stack.Screen name="Todo">
+        <Stack.Screen name="Todo" options={{headerTitle: "Todo List"}}>
           {(props) => (
             <Todo
               {...props}

@@ -15,6 +15,10 @@ const styles= StyleSheet.create({
     textAlign:'center',
     marginBottom:5
 
+  },
+  calender:{
+    justifyContent:'flex-start',
+    alignItems:'center'
   }
 
 })
