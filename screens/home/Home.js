@@ -25,7 +25,7 @@ const Home = (props) => {
   return (
     
     <View style={styles.container}>
-       <View>
+       <View style={{marginTop:-350, marginBottom:170, zIndex:100}}>
       <DatePicker
         selected={date}
         onChange={(date) => setDate(date)}

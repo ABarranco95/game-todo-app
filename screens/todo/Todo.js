@@ -65,6 +65,12 @@ const Todo = (props) => {
       }
     });
   }, []);
+  const handleKeypress = (e) => {
+    //it triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      addTask();
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -78,6 +84,7 @@ const Todo = (props) => {
           placeholder={"Write a task"}
           value={task}
           onChangeText={(text) => setTask(text)}
+          onKeyPress={handleKeypress}
         />
 
         <TouchableOpacity onPress={() => addTask()}>

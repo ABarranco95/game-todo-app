@@ -1,53 +1,16 @@
 import { View, Text } from 'react-native';
 import React,{useState} from 'react';
-import {
-  getDatabase,
-  onValue,
-  set,
-  ref,
-  push,
-  child,
-  update,
-} from "firebase/database";
+import { getDatabase, ref, onValue, set } from "firebase/database";
 
-const   Complete = (props) => {
-  const [completeTask, setCompleteTask] = useState("");
-  const [totalPoints, setTotalPoints] = useState("");
-  const [pointGiven, setPointGiven] = useState(false);
-
+const Complete = (props) => {
+  const [check, setCheck]=useState('')
   const db = getDatabase();
-  const postRef = ref(db, "posts/" + props.userId);
-
-  // const addToPostRef = push(postRef);
-  const taskComplete = (id) => {
-    const completeTaskRef = ref(db, "toDoList/" + userId + "/" + id);
-    update(completeTaskRef, {
-      complete: true,
-      pointGiven: true,
-    });
-
   return (
-    <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={styles.writeTaskWrapper}
-      >
-        
-
-        
-      </KeyboardAvoidingView>
-
-      <View style={{ width: 350, height: 450 }}>
-        <FlatList
-          data={props.allTasks}
-          renderItem={({ item }) => (
-            <Score item={item} db={db} userId={props.userId} />
-          )}
-        />
-      </View>
-    </SafeAreaView>
+    <View>
+     
+      <Text>This is complete page</Text>
+    </View>
   );
 };
 
-}
 export default Complete;
