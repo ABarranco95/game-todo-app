@@ -44,6 +44,7 @@ const Todo = (props) => {
         postId: addToPostRef.key,
         post: task,
         completed: check,
+        score: 0
       });
     } else {
       setNotRegisteredMessage(true);

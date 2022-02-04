@@ -48,6 +48,7 @@ const Task = ({ item, db, userId }) => {
 
     update(updateTaskRef, {
       completed: true,
+      score: 10,
     });
   };
 
@@ -79,8 +80,6 @@ const Task = ({ item, db, userId }) => {
     const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
     remove(updateTaskRef);
   };
-
-  
 
   return (
     <View>
