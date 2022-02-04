@@ -58,14 +58,21 @@ const Todo = (props) => {
         let result = Object.keys(returnedItems).map(
           (key) => returnedItems[key]
         );
-        props.setAllTasks(result);
+
+        let incompletedToDos = [];
+        result.map((item) => {
+          if (!item.completed) {
+            incompletedToDos.push(item);
+          }
+        });
+        props.setAllTasks(incompletedToDos);
       } else {
         props.setAllTasks([]);
       }
     });
   }, []);
 
-  
+  console.log(props.allTasks);
 
   const handleKeypress = (e) => {
     //it triggers by pressing the enter key

@@ -10,7 +10,7 @@ import {
   update,
   remove,
 } from "firebase/database";
-import CompletedTask from "./CompletedTask";
+// import CompletedTask from "./CompletedTask";
 import styles from "./styles";
 
 const Complete = (props) => {
@@ -28,13 +28,19 @@ const Complete = (props) => {
           (key) => returnedItems[key]
         );
 
+        let completedToDos = [];
+
         result.map((item) => {
           if (item.completed) {
-            completedTasks.push(item);
+            completedToDos.push(item);
           }
+
+          console.log(completedToDos);
         });
+        setCompletedTasks(completedToDos);
+        // completedTasks(completedToDos);
       } else {
-        completedTasks([]);
+        setCompletedTasks([]);
       }
     });
   }, []);
@@ -43,17 +49,16 @@ const Complete = (props) => {
     const [toggleEdit, setToggleEdit] = useState(false);
     const [changeTodo, setChangeTodo] = useState("");
     const [check, setCheck] = useState(false);
-  
+
     const updateCheck = (id) => {
       console.log("updateCheck function hit");
       const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
-  
+
       update(updateTaskRef, {
         completed: true,
       });
     };
-  
-  
+
     return (
       // <View style={styles.container}>
       //   <SafeAreaView style={styles.item}>
@@ -61,7 +66,7 @@ const Complete = (props) => {
       //       <View style={styles.square}></View>
       //       <Text style={styles.itemText}>{item.post}</Text>
       //     </View>
-  
+
       //     <CheckBox
       //       center
       //       checked={check}
@@ -74,8 +79,6 @@ const Complete = (props) => {
       </View>
     );
   };
-
-  console.log(completedTasks);
 
   return (
     <View style={styles.container}>
