@@ -48,7 +48,7 @@ const Task = ({ item, db, userId }) => {
 
     update(updateTaskRef, {
       completed: true,
-      score: 10,
+      score: 1,
     });
   };
 

@@ -12,6 +12,7 @@ import {
 } from "firebase/database";
 // import CompletedTask from "./CompletedTask";
 import styles from "./styles";
+import Score from "./Score";
 
 const Complete = (props) => {
   const [check, setCheck] = useState("");
@@ -34,8 +35,6 @@ const Complete = (props) => {
           if (item.completed) {
             completedToDos.push(item);
           }
-
-          console.log(completedToDos);
         });
         setCompletedTasks(completedToDos);
         // completedTasks(completedToDos);
@@ -82,6 +81,7 @@ const Complete = (props) => {
 
   return (
     <View style={styles.container}>
+      <Score db={db} userId={props.userId} />
       <FlatList
         data={completedTasks}
         renderItem={({ item }) => (
