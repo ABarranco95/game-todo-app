@@ -45,10 +45,14 @@ const Task = ({ item, db, userId }) => {
   const updateCheck = (id) => {
     console.log("updateCheck function hit");
     const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
+    const scoreRef = ref(db, "score/" + userId + "/" + id);
 
     update(updateTaskRef, {
       completed: true,
-      score: 1,
+    });
+
+    update(scoreRef, {
+      score: 5,
     });
   };
 

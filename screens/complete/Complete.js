@@ -81,7 +81,7 @@ const Complete = (props) => {
 
   return (
     <View style={styles.container}>
-      <Score db={db} userId={props.userId} completedTasks={completedTasks}/>
+      <Score db={db} userId={props.userId} completedTasks={completedTasks} />
       <FlatList
         data={completedTasks}
         renderItem={({ item }) => (
