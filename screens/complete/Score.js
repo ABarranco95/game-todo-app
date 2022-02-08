@@ -16,24 +16,8 @@ const Score = ({ userId }) => {
   const scoreRef = ref(db, "score/" + userId);
 
   useEffect(() => {
-    onValue(scoreRef, (snapshot) => {
-      if (snapshot.val() !== null) {
-        const returnedItems = snapshot.val();
-        let result = Object.keys(returnedItems).map(
-          (key) => returnedItems[key]
-        );
-
-        let runningCount = 0;
-        result.map((item) => {
-          if (item.score !== 0) {
-            runningCount += item.score;
-          }
-        });
-        setScoreCount(runningCount);
-        // completedTasks(completedToDos);
-      } else {
-        setScoreCount(0);
-      }
+    return onValue(scoreRef, (snapshot) => {
+      setScoreCount(snapshot.val().score);
     });
   }, []);
 

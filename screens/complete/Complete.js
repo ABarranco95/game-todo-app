@@ -20,9 +20,10 @@ const Complete = (props) => {
 
   const db = getDatabase();
   const postRef = ref(db, "posts/" + props.userId);
+  const scoreRef = ref(db, "score/" + props.userId);
 
   useEffect(() => {
-    onValue(postRef, (snapshot) => {
+    return onValue(postRef, (snapshot) => {
       if (snapshot.val() !== null) {
         const returnedItems = snapshot.val();
         let result = Object.keys(returnedItems).map(
@@ -48,33 +49,27 @@ const Complete = (props) => {
     const [changeTodo, setChangeTodo] = useState("");
     const [check, setCheck] = useState(false);
     const [reverseTask, setReverseTask] = useState(false);
+    const [score, setScore] = useState();
 
-    // const handleReverse = (taskId) => {
-    //   const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
-    //   // const scoreRef = ref(db, "score/" + userId + "/" + id);
-    //   console.log("handle edit triggered");
-    //   if (reverseTask) {
-    //     console.log("Changing to false");
-    //     update(updateTaskRef, {
-    //       completed: false,
-    //     });
-    //     // update(scoreRef, {
-    //     //   score: 0,
-    //     // });
-    //   }
-    //   // else {
-    //   //   setChangeTodo(task);
-    //   //   setToggleEdit(!toggleEdit);
-    //   // }
-    // };
+    const scoreRef = ref(db, "score/" + userId);
 
-    const handleDelete = (task, id) => {
-      console.log("Deleting task id -->" + id + " & task -->" + task);
+    const handleIncomplete = (id) => {
       const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
-      const scoreRef = ref(db, "score/" + userId + "/" + id);
-      remove(updateTaskRef);
-      remove(scoreRef);
+
+      update(updateTaskRef, {
+        completed: false,
+      });
+
+      update(scoreRef, {
+        score: score - 5,
+      });
     };
+
+    useEffect(() => {
+      return onValue(scoreRef, (snapshot) => {
+        setScore(snapshot.val().score);
+      });
+    }, []);
 
     return (
       <View>
@@ -83,14 +78,15 @@ const Complete = (props) => {
         {/* <Pressable onPress={() => handleReverse(item.id)}>
           <Text>Undo Complete</Text>
         </Pressable> */}
-        <Pressable onPress={() => handleDelete(item.post, item.postId)}>
-          <Text>Delete</Text>
+        <Pressable onPress={() => handleIncomplete(item.postId)}>
+          <Text>Mark as incomplete</Text>
         </Pressable>
         <br />
       </View>
     );
   };
 
+  
   return (
     <View style={styles.container}>
       <Score db={db} userId={props.userId} completedTasks={completedTasks} />

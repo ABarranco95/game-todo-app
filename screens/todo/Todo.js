@@ -75,11 +75,13 @@ const Todo = (props) => {
 
   useEffect(() => {
     return onValue(scoreRef, (snapshot) => {
-      console.log("this is a thing =-==>", snapshot.val());
+      console.log("this is a thing ==>", snapshot.val());
       if (snapshot.val() === null) {
         set(scoreRef, {
           score: 0,
         });
+      } else {
+        console.log(snapshot.val());
       }
     });
   }, []);

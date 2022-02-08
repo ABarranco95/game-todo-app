@@ -18,6 +18,7 @@ import {
   getDatabase,
   onValue,
   set,
+  get,
   ref,
   update,
   remove,
@@ -28,32 +29,20 @@ const Task = ({ item, db, userId }) => {
   const [toggleEdit, setToggleEdit] = useState(false);
   const [changeTodo, setChangeTodo] = useState("");
   const [check, setCheck] = useState(false);
+  const [score, setScore] = useState(0);
 
-  // const completeTask = (index) => {
-  //   let itemsCopy = [...taskItems];
-  //   itemsCopy.splice(index, 1);
-  //   setTaskItems(itemsCopy);
-  // };
-
-  // const updateDone = (check, id) => {
-  //   console.log("check is " + check);
-  //   if (check) {
-  //     updateCheck(check, id);
-  //   }
-  // };
 
   const updateCheck = (id) => {
     console.log("hitting posts/" + userId + "/" + id);
     const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
-    const scoreRef = ref(db, "score/" + userId + "/" + id);
+    const scoreRef = ref(db, "score/" + userId);
 
     update(updateTaskRef, {
       completed: true,
     });
 
     update(scoreRef, {
-      postId: id, // adding post id to score to target post for editing and deleting
-      score: 5,
+      score: score + 5,
     });
   };
 
@@ -85,6 +74,13 @@ const Task = ({ item, db, userId }) => {
     const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
     remove(updateTaskRef);
   };
+
+  useEffect(() => {
+    const scoreRef = ref(db, "score/" + userId);
+    return onValue(scoreRef, (snapshot) => {
+      setScore(snapshot.val().score);
+    });
+  }, []);
 
   return (
     <View>
