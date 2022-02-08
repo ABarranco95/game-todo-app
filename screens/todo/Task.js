@@ -43,7 +43,7 @@ const Task = ({ item, db, userId }) => {
   // };
 
   const updateCheck = (id) => {
-    console.log("updateCheck function hit");
+    console.log("hitting posts/" + userId + "/" + id);
     const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
     const scoreRef = ref(db, "score/" + userId + "/" + id);
 
@@ -52,17 +52,18 @@ const Task = ({ item, db, userId }) => {
     });
 
     update(scoreRef, {
+      postId: id, // adding post id to score to target post for editing and deleting
       score: 5,
     });
   };
 
   const handleEdit = (task, id) => {
-    console.log("handle edit triggered");
+    console.log("handle edit triggered to true");
     if (toggleEdit) {
       if (changeTodo !== "") {
         updateData(changeTodo, id);
         setToggleEdit(!toggleEdit);
-        console.log("updateDate hit");
+        console.log("updateDate function triggered");
       }
     } else {
       setChangeTodo(task);
@@ -70,9 +71,9 @@ const Task = ({ item, db, userId }) => {
     }
   };
 
-  const updateData = (changeTodo, postId) => {
-    console.log("updateData function hit");
-    const updateTaskRef = ref(db, "posts/" + userId + "/" + postId);
+  const updateData = (changeTodo, id) => {
+    console.log("updateData hitting posts/" + userId + "/" + id);
+    const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
 
     update(updateTaskRef, {
       post: changeTodo,

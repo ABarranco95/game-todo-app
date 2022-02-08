@@ -9,7 +9,7 @@ import {
   remove,
 } from "firebase/database";
 
-const Score = ({ completedTasks, userId, id }) => {
+const Score = ({ userId }) => {
   const [scoreCount, setScoreCount] = useState(0);
 
   const db = getDatabase();
@@ -19,11 +19,9 @@ const Score = ({ completedTasks, userId, id }) => {
     onValue(scoreRef, (snapshot) => {
       if (snapshot.val() !== null) {
         const returnedItems = snapshot.val();
-        console.log(returnedItems);
         let result = Object.keys(returnedItems).map(
           (key) => returnedItems[key]
         );
-        console.log(result);
 
         let runningCount = 0;
         result.map((item) => {
@@ -42,7 +40,6 @@ const Score = ({ completedTasks, userId, id }) => {
   return (
     <View>
       <Text>{scoreCount}</Text>
-      <br></br>
     </View>
   );
 };

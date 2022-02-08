@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, Pressable, SafeAreaView } from "react-native";
 import React, { useState, useEffect } from "react";
 import {
   getDatabase,
@@ -45,36 +45,48 @@ const Complete = (props) => {
   }, []);
 
   const CompletedTask = ({ item, db, userId }) => {
-    const [toggleEdit, setToggleEdit] = useState(false);
     const [changeTodo, setChangeTodo] = useState("");
     const [check, setCheck] = useState(false);
+    const [reverseTask, setReverseTask] = useState(false);
 
-    const updateCheck = (id) => {
-      console.log("updateCheck function hit");
+    // const handleReverse = (taskId) => {
+    //   const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
+    //   // const scoreRef = ref(db, "score/" + userId + "/" + id);
+    //   console.log("handle edit triggered");
+    //   if (reverseTask) {
+    //     console.log("Changing to false");
+    //     update(updateTaskRef, {
+    //       completed: false,
+    //     });
+    //     // update(scoreRef, {
+    //     //   score: 0,
+    //     // });
+    //   }
+    //   // else {
+    //   //   setChangeTodo(task);
+    //   //   setToggleEdit(!toggleEdit);
+    //   // }
+    // };
+
+    const handleDelete = (task, id) => {
+      console.log("Deleting task id -->" + id + " & task -->" + task);
       const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
-
-      update(updateTaskRef, {
-        completed: true,
-      });
+      const scoreRef = ref(db, "score/" + userId + "/" + id);
+      remove(updateTaskRef);
+      remove(scoreRef);
     };
 
     return (
-      // <View style={styles.container}>
-      //   <SafeAreaView style={styles.item}>
-      //     <View style={styles.itemLeft}>
-      //       <View style={styles.square}></View>
-      //       <Text style={styles.itemText}>{item.post}</Text>
-      //     </View>
-
-      //     <CheckBox
-      //       center
-      //       checked={check}
-      //       onPress={() => updateCheck(item.postId)}
-      //     />
-      //   </SafeAreaView>
-      // </View>
       <View>
+        <br />
         <Text>{item.post}</Text>
+        {/* <Pressable onPress={() => handleReverse(item.id)}>
+          <Text>Undo Complete</Text>
+        </Pressable> */}
+        <Pressable onPress={() => handleDelete(item.post, item.postId)}>
+          <Text>Delete</Text>
+        </Pressable>
+        <br />
       </View>
     );
   };
