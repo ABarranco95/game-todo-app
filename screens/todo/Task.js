@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
   TouchableOpacity,
   TextInput,
-  Modal,
-  Alert,
+  
   FlatList,
   KeyboardAvoidingView,
   Platform,
@@ -29,18 +28,7 @@ const Task = ({ item, db, userId }) => {
   const [changeTodo, setChangeTodo] = useState("");
   const [check, setCheck] = useState(false);
 
-  // const completeTask = (index) => {
-  //   let itemsCopy = [...taskItems];
-  //   itemsCopy.splice(index, 1);
-  //   setTaskItems(itemsCopy);
-  // };
-
-  // const updateDone = (check, id) => {
-  //   console.log("check is " + check);
-  //   if (check) {
-  //     updateCheck(check, id);
-  //   }
-  // };
+  
 
   const updateCheck = (id) => {
     console.log("updateCheck function hit");
@@ -52,7 +40,7 @@ const Task = ({ item, db, userId }) => {
     });
 
     update(scoreRef, {
-      score: 5,
+      score: 1,
     });
   };
 
@@ -103,7 +91,7 @@ const Task = ({ item, db, userId }) => {
             </View>
 
             <CheckBox
-              center
+              right
               checked={check}
               onPress={() => updateCheck(item.postId)}
             />

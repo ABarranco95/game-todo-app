@@ -59,20 +59,7 @@ const Complete = (props) => {
     };
 
     return (
-      // <View style={styles.container}>
-      //   <SafeAreaView style={styles.item}>
-      //     <View style={styles.itemLeft}>
-      //       <View style={styles.square}></View>
-      //       <Text style={styles.itemText}>{item.post}</Text>
-      //     </View>
-
-      //     <CheckBox
-      //       center
-      //       checked={check}
-      //       onPress={() => updateCheck(item.postId)}
-      //     />
-      //   </SafeAreaView>
-      // </View>
+     
       <View>
         <Text>{item.post}</Text>
       </View>
