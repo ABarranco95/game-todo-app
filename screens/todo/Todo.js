@@ -33,6 +33,7 @@ const Todo = (props) => {
 
   const db = getDatabase();
   const postRef = ref(db, "posts/" + props.userId);
+  const scoreRef = ref(db, "score/" + props.userId);
 
   const addToPostRef = push(postRef);
 
@@ -52,7 +53,7 @@ const Todo = (props) => {
   };
 
   useEffect(() => {
-    onValue(postRef, (snapshot) => {
+    return onValue(postRef, (snapshot) => {
       if (snapshot.val() !== null) {
         const returnedItems = snapshot.val();
         let result = Object.keys(returnedItems).map(
@@ -68,6 +69,19 @@ const Todo = (props) => {
         props.setAllTasks(incompletedToDos);
       } else {
         props.setAllTasks([]);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    return onValue(scoreRef, (snapshot) => {
+      console.log("this is a thing ==>", snapshot.val());
+      if (snapshot.val() === null) {
+        set(scoreRef, {
+          score: 0,
+        });
+      } else {
+        console.log(snapshot.val());
       }
     });
   }, []);
@@ -105,7 +119,7 @@ const Todo = (props) => {
       <View style={{ width: 350, height: 450 }}>
         <FlatList
           data={props.allTasks}
-          renderItem={({ item }) => (
+          renderItem={({ item, key }) => (
             <Task item={item} db={db} userId={props.userId} />
           )}
         />

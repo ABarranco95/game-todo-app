@@ -17,6 +17,7 @@ import {
   getDatabase,
   onValue,
   set,
+  get,
   ref,
   update,
   remove,
@@ -27,30 +28,38 @@ const Task = ({ item, db, userId }) => {
   const [toggleEdit, setToggleEdit] = useState(false);
   const [changeTodo, setChangeTodo] = useState("");
   const [check, setCheck] = useState(false);
+  const [score, setScore] = useState(0);
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> 4653c7acebef0fd0ea37894b32ab679b7b95adaf
 
   const updateCheck = (id) => {
-    console.log("updateCheck function hit");
+    console.log("hitting posts/" + userId + "/" + id);
     const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
-    const scoreRef = ref(db, "score/" + userId + "/" + id);
+    const scoreRef = ref(db, "score/" + userId);
 
     update(updateTaskRef, {
       completed: true,
     });
 
     update(scoreRef, {
+<<<<<<< HEAD
       score: 1,
+=======
+      score: score + 5,
+>>>>>>> 4653c7acebef0fd0ea37894b32ab679b7b95adaf
     });
   };
 
   const handleEdit = (task, id) => {
-    console.log("handle edit triggered");
+    console.log("handle edit triggered to true");
     if (toggleEdit) {
       if (changeTodo !== "") {
         updateData(changeTodo, id);
         setToggleEdit(!toggleEdit);
-        console.log("updateDate hit");
+        console.log("updateDate function triggered");
       }
     } else {
       setChangeTodo(task);
@@ -58,9 +67,9 @@ const Task = ({ item, db, userId }) => {
     }
   };
 
-  const updateData = (changeTodo, postId) => {
-    console.log("updateData function hit");
-    const updateTaskRef = ref(db, "posts/" + userId + "/" + postId);
+  const updateData = (changeTodo, id) => {
+    console.log("updateData hitting posts/" + userId + "/" + id);
+    const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
 
     update(updateTaskRef, {
       post: changeTodo,
@@ -72,6 +81,13 @@ const Task = ({ item, db, userId }) => {
     const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
     remove(updateTaskRef);
   };
+
+  useEffect(() => {
+    const scoreRef = ref(db, "score/" + userId);
+    return onValue(scoreRef, (snapshot) => {
+      setScore(snapshot.val().score);
+    });
+  }, []);
 
   return (
     <View>

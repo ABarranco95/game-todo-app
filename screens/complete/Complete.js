@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, Pressable, SafeAreaView } from "react-native";
 import React, { useState, useEffect } from "react";
 import {
   getDatabase,
@@ -20,9 +20,10 @@ const Complete = (props) => {
 
   const db = getDatabase();
   const postRef = ref(db, "posts/" + props.userId);
+  const scoreRef = ref(db, "score/" + props.userId);
 
   useEffect(() => {
-    onValue(postRef, (snapshot) => {
+    return onValue(postRef, (snapshot) => {
       if (snapshot.val() !== null) {
         const returnedItems = snapshot.val();
         let result = Object.keys(returnedItems).map(
@@ -45,27 +46,52 @@ const Complete = (props) => {
   }, []);
 
   const CompletedTask = ({ item, db, userId }) => {
-    const [toggleEdit, setToggleEdit] = useState(false);
     const [changeTodo, setChangeTodo] = useState("");
     const [check, setCheck] = useState(false);
+    const [reverseTask, setReverseTask] = useState(false);
+    const [score, setScore] = useState();
 
-    const updateCheck = (id) => {
-      console.log("updateCheck function hit");
+    const scoreRef = ref(db, "score/" + userId);
+
+    const handleIncomplete = (id) => {
       const updateTaskRef = ref(db, "posts/" + userId + "/" + id);
 
       update(updateTaskRef, {
-        completed: true,
+        completed: false,
+      });
+
+      update(scoreRef, {
+        score: score - 5,
       });
     };
 
+<<<<<<< HEAD
     return (
      
+=======
+    useEffect(() => {
+      return onValue(scoreRef, (snapshot) => {
+        setScore(snapshot.val().score);
+      });
+    }, []);
+
+    return (
+>>>>>>> 4653c7acebef0fd0ea37894b32ab679b7b95adaf
       <View>
+        <br />
         <Text>{item.post}</Text>
+        {/* <Pressable onPress={() => handleReverse(item.id)}>
+          <Text>Undo Complete</Text>
+        </Pressable> */}
+        <Pressable onPress={() => handleIncomplete(item.postId)}>
+          <Text>Mark as incomplete</Text>
+        </Pressable>
+        <br />
       </View>
     );
   };
 
+  
   return (
     <View style={styles.container}>
       <Score db={db} userId={props.userId} completedTasks={completedTasks} />
