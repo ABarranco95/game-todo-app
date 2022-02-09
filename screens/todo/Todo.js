@@ -4,8 +4,7 @@ import {
   View,
   TouchableOpacity,
   TextInput,
-  Modal,
-  Alert,
+  
   FlatList,
   KeyboardAvoidingView,
   Platform,

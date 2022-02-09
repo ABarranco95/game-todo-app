@@ -23,7 +23,7 @@ const Score = ({ userId }) => {
 
   return (
     <View>
-      <Text>{scoreCount}</Text>
+      <Text>Your current score:{scoreCount}</Text>
     </View>
   );
 };

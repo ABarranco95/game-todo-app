@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -30,10 +30,6 @@ const Task = ({ item, db, userId }) => {
   const [check, setCheck] = useState(false);
   const [score, setScore] = useState(0);
 
-<<<<<<< HEAD
-  
-=======
->>>>>>> 4653c7acebef0fd0ea37894b32ab679b7b95adaf
 
   const updateCheck = (id) => {
     console.log("hitting posts/" + userId + "/" + id);
@@ -45,11 +41,7 @@ const Task = ({ item, db, userId }) => {
     });
 
     update(scoreRef, {
-<<<<<<< HEAD
-      score: 1,
-=======
       score: score + 5,
->>>>>>> 4653c7acebef0fd0ea37894b32ab679b7b95adaf
     });
   };
 

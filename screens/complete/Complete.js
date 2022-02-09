@@ -20,7 +20,7 @@ const Complete = (props) => {
 
   const db = getDatabase();
   const postRef = ref(db, "posts/" + props.userId);
-  const scoreRef = ref(db, "score/" + props.userId);
+  // const scoreRef = ref(db, "score/" + props.userId);
 
   useEffect(() => {
     return onValue(postRef, (snapshot) => {
@@ -65,10 +65,6 @@ const Complete = (props) => {
       });
     };
 
-<<<<<<< HEAD
-    return (
-     
-=======
     useEffect(() => {
       return onValue(scoreRef, (snapshot) => {
         setScore(snapshot.val().score);
@@ -76,7 +72,6 @@ const Complete = (props) => {
     }, []);
 
     return (
->>>>>>> 4653c7acebef0fd0ea37894b32ab679b7b95adaf
       <View>
         <br />
         <Text>{item.post}</Text>
