@@ -75,18 +75,18 @@ const Todo = (props) => {
 
   useEffect(() => {
     return onValue(scoreRef, (snapshot) => {
-      console.log("this is a thing ==>", snapshot.val());
+      
       if (snapshot.val() === null) {
         set(scoreRef, {
           score: 0,
         });
       } else {
-        console.log(snapshot.val());
+        
       }
     });
   }, []);
 
-  console.log(props.allTasks);
+
 
   const handleKeypress = (e) => {
     //it triggers by pressing the enter key
@@ -118,6 +118,7 @@ const Todo = (props) => {
 
       <View style={{ width: 350, height: 450 }}>
         <FlatList
+       
           data={props.allTasks}
           renderItem={({ item, key }) => (
             <Task item={item} db={db} userId={props.userId} />
