@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, Alert, TextInput, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  Alert,
+  TextInput,
+  TouchableOpacity,
+  Pressable,
+  SafeAreaView,
+} from "react-native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {
@@ -17,15 +25,9 @@ import styles from "./styles";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [toggleRegister, setToggleRegister] = useState(false);
 
-  //   const Profile = ({ userId }) => {
-  //   //const [scoreCount, setScoreCount] = useState(0);
-  // }
   const db = getDatabase();
-  const profileRef = ref(db, "profiles/" + props.userId);
-  console.log(props.userId);
 
   const register = () => {
     createUserWithEmailAndPassword(props.userAuth, email, password);
@@ -37,10 +39,6 @@ const Login = (props) => {
 
   useEffect(() => {
     if (props.userId !== "") {
-      set(profileRef, {
-        firstName: firstName,
-        lastName: lastName,
-      });
       props.navigation.navigate("Home");
     } else {
       setEmail("");
@@ -48,54 +46,52 @@ const Login = (props) => {
     }
   }, [props.userId]);
 
-  //   useEffect(() => {
-  //     return onValue(profileRef, (snapshot) => {
-  //       if (snapshot.val() === null) {
-  //         set(profileRef, {
-  //           firstName: firstName,
-  //           lastName: lastName,
-  //         });
-  //       } else {
-  //       }
-  //     });
-  //   }, []);
-
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-      />
-      <TextInput
-        style={styles.textInput}
-        placeholder="name"
-        value={firstName}
-        onChangeText={setFirstName}
-      />
-      <TextInput
-        style={styles.textInput}
-        placeholder="lastname"
-        value={lastName}
-        onChangeText={setLastName}
-      />
-      <TextInput
-        style={styles.textInput}
-        placeholder="password"
-        value={password}
-        onChangeText={setPassword}
-        //  secureTextEntry
-      />
+    <View>
+      <View style={styles.container}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="password"
+          value={password}
+          onChangeText={setPassword}
+          //  secureTextEntry
+        />
 
-      <TouchableOpacity style={styles.login} onPress={login}>
-        <Text style={styles.text}>Login</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.login} onPress={register}>
-        <Text style={styles.text}>register</Text>
-      </TouchableOpacity>
+        {toggleRegister ? (
+          <TouchableOpacity style={styles.login} onPress={register}>
+            <Text style={styles.text}>Register</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity style={styles.login} onPress={login}>
+            <Text style={styles.text}>Login</Text>
+          </TouchableOpacity>
+        )}
+        <br />
+        <br />
+        <Pressable onPress={() => setToggleRegister(!toggleRegister)}>
+          <Text>Register For Account</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
 
 export default Login;
+
+// {toggleRegister ? (
+//     <Pressable onPress={() => setToggleRegister(!toggleRegister)}>
+//       <Text>Need An Account?</Text>
+//     </Pressable>
+//   ) : (
+//     <View>
+//       <TouchableOpacity style={styles.login} onPress={register}>
+//         <Text style={styles.text}>register</Text>
+//       </TouchableOpacity>
+//     </View>
+//   )}
