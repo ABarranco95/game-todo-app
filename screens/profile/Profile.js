@@ -22,13 +22,6 @@ const Profile = (props) => {
 
   const profileRef = ref(db, "profiles/" + props.userId);
 
-  // const onSubmit = () => {
-  //   set(profileRef, {
-  //     firstName: first,
-  //     lastName: last,
-  //   });
-  // };
-
   const onSubmit = () => {
     set(profileRef, {
       firstName: firstName,
@@ -63,7 +56,7 @@ const Profile = (props) => {
         console.log("value is empty");
       }
     });
-  }, []);
+  }, [firstName]);
 
   return (
     <View style={styles.container}>
