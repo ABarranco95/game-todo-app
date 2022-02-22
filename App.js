@@ -10,6 +10,7 @@ import Todo from "./screens/todo/Todo";
 import Home from "./screens/home/Home";
 import Complete from "./screens/complete/Complete";
 import StartPage from "./screens/startedpage/StartPage";
+import LandingPage from "./screens/landing/LandingPage";
 
 import Score from "./screens/complete/Score";
 
@@ -36,31 +37,61 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="StartPage" >
-      <Stack.Screen name="StartPage">
+      <Stack.Navigator initialRouteName="LandingPage">
+        <Stack.Screen
+          name="landingPage"
+          options={{
+            headerShown: false,
+          }}
+        >
           {(props) => (
-            <StartPage {...props} userAuth={userAuth} userId={userId} />
+            <LandingPage {...props} userAuth={userAuth} userId={userId} />
           )}
         </Stack.Screen>
-        
-        <Stack.Screen name="Login">
+
+        <Stack.Screen
+          name="Login"
+          options={{
+            headerShown: false,
+          }}
+        >
           {(props) => <Login {...props} userAuth={userAuth} userId={userId} />}
         </Stack.Screen>
-        
-        <Stack.Screen name="Home">
+
+        <Stack.Screen
+          name="Home"
+          options={{
+            headerShown: false,
+          }}
+        >
           {(props) => <Home {...props} userAuth={userAuth} userId={userId} />}
         </Stack.Screen>
-        <Stack.Screen name="Complete">
+        <Stack.Screen
+          name="Complete"
+          options={{
+            headerShown: false,
+          }}
+        >
           {(props) => (
             <Complete {...props} userAuth={userAuth} userId={userId} />
           )}
         </Stack.Screen>
-        <Stack.Screen name="Profile">
+        <Stack.Screen
+          name="Profile"
+          options={{
+            headerShown: false,
+          }}
+        >
           {(props) => (
             <Profile {...props} userAuth={userAuth} userId={userId} />
           )}
         </Stack.Screen>
-        <Stack.Screen name="Todo" options={{ headerTitle: "Todo List" }}>
+        <Stack.Screen
+          name="Todo"
+          options={{
+            headerShown: false,
+          }}
+        >
           {(props) => (
             <Todo
               {...props}

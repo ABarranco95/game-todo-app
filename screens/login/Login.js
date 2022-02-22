@@ -8,7 +8,8 @@ import {
   Pressable,
   SafeAreaView,
   Button,
-  ImageBackground, Image
+  ImageBackground,
+  Image,
 } from "react-native";
 import { BackgroundImage } from "react-native-elements/dist/config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -26,7 +27,6 @@ import {
 import styles from "./styles";
 // import Login from './Login';
 // import { BackgroundImage } from "react-native-elements/dist/config";
-
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -58,60 +58,94 @@ const Login = (props) => {
 
   return (
     <View style={styles.container}>
-       <BackgroundImage 
+      <Image
         style={styles.imgBgd}
-        source={
-          require( '../../assets/Loginimg2.png')
-        }
-        
-      > 
-       </BackgroundImage>
-      <View>
-     
-       
-        <TextInput
-          style={styles.textInput}
-          placeholder="password"
-          value={password}
-          onChangeText={setPassword}
-          //  secureTextEntry
-        />
-         <TextInput
-          style={styles.textInput}
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-        />
-
-        {/* {toggleRegister ? (
-         <TouchableOpacity style={styles.login} onPress={login}>
-         <Text style={styles.text}>Login</Text>
-       </TouchableOpacity>
+        source={require("../../assets/underground-cave-login.png")}
+      />
+      <View style={styles.loginContainer}>
+        {toggleRegister ? (
+          <View>
+            <Text style={styles.loginTitle}>Register</Text>
+            <View style={styles.textInputContaine}>
+              <Text style={styles.emailTitle}>Email/Username</Text>
+              <TextInput
+                style={styles.emailInput}
+                placeholder="Type your email or username"
+                value={email}
+                onChangeText={setEmail}
+              />
+              <Text style={styles.passwordTitle}>Password</Text>
+              <TextInput
+                style={styles.passwordInput}
+                placeholder="Type your password"
+                value={password}
+                onChangeText={setPassword}
+                //  secureTextEntry
+              />
+            </View>
+            <TouchableOpacity style={styles.loginBtn} onPress={register}>
+              <Text style={styles.btnText}>Let's Go</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.registerBtn}
+                onPress={() => setToggleRegister(!toggleRegister)}
+              >
+                <Text>Need to login?</Text>
+              </TouchableOpacity>
+          </View>
         ) : (
-          
-           <TouchableOpacity style={styles.login} onPress={register}>
-           <Text style={styles.text}>Register</Text>
-         </TouchableOpacity>
+          <View>
+            <Text style={styles.loginTitle}>Login</Text>
+            <View style={styles.textInputContaine}>
+              <Text style={styles.emailTitle}>Email/Username</Text>
+              <TextInput
+                style={styles.emailInput}
+                placeholder="Type your email or username"
+                value={email}
+                onChangeText={setEmail}
+              />
+              <Text style={styles.passwordTitle}>Password</Text>
+              <TextInput
+                style={styles.passwordInput}
+                placeholder="Type your password"
+                value={password}
+                onChangeText={setPassword}
+                //  secureTextEntry
+              />
+
+              <TouchableOpacity style={styles.loginBtn} onPress={login}>
+                <Text style={styles.btnText}>Let's Go</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.registerBtn}
+                onPress={() => setToggleRegister(!toggleRegister)}
+              >
+                <Text>Need an account?</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         )}
-       
-        <TouchableOpacity title="Register"onPress={() => setToggleRegister(!toggleRegister)}><Text>Do you have account?</Text></TouchableOpacity>
-       */}
       </View>
-      <View style={styles.login}>
-     
-        <TouchableOpacity  onPress={register}>
-        <Text style={styles.text}>Register / </Text>
-      </TouchableOpacity>
-      
-      
-      <TouchableOpacity  onPress={login}>
-        <Text style={styles.text}>Login</Text>
-      </TouchableOpacity>
+      {/* {toggleRegister ? (
+          <TouchableOpacity style={styles.login} onPress={login}>
+          <Text style={styles.text}>Login</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity style={styles.login} onPress={register}>
+            <Text style={styles.text}>Register</Text>
+          </TouchableOpacity>
+        )}
+        
+        <TouchableOpacity
+          title="Register"
+          onPress={() => setToggleRegister(!toggleRegister)}
+        >
+          <Text>Do you have account?</Text>
+        </TouchableOpacity> */}
 
-
-      </View>
-      
-     
+      {/* <TouchableOpacity onPress={register}>
+          <Text style={styles.text}>Register / </Text>
+        </TouchableOpacity> */}
     </View>
   );
 };
