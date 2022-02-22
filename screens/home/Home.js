@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, Image } from "react-native";
 import { getDatabase, onValue, set, ref } from "firebase/database";
-import DatePicker from "react-datepicker";
-  import "react-datepicker/dist/react-datepicker.css";
-
+// import DatePicker from "react-datepicker";
+  // import "react-datepicker/dist/react-datepicker.css";
 
 import styles from "./styles";
+import { BackgroundImage } from "react-native-elements/dist/config";
 
 
 const Home = (props) => {
@@ -25,12 +25,22 @@ const Home = (props) => {
   return (
     
     <View style={styles.container}>
+       
+      {/* <Image styles={ {width: 250,
+    height: 200,}} source={require('../../assets/bgdImg.png')} /> */}
+    <BackgroundImage 
+        style={{width:500, height:500, }}
+        source={
+          require( '../../assets/bgdImg.png')
+        }
+      ></BackgroundImage>
        <View style={{marginTop:-350, marginBottom:170, zIndex:100}}>
-      <DatePicker
+      {/* <DatePicker
         selected={date}
         onChange={(date) => setDate(date)}
         style={{width:200, zIndex:100, marginBottom:-50, position:'relative'}}
-      /></View> 
+      /> */}
+      </View> 
       <TouchableOpacity onPress={() => props.navigation.navigate("Profile")}>
         <Text style={styles.btnStyle}>Profile</Text>
       </TouchableOpacity>

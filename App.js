@@ -9,6 +9,8 @@ import Profile from "./screens/profile/Profile";
 import Todo from "./screens/todo/Todo";
 import Home from "./screens/home/Home";
 import Complete from "./screens/complete/Complete";
+import StartPage from "./screens/startedpage/StartPage";
+
 import Score from "./screens/complete/Score";
 
 import "./firebase";
@@ -34,17 +36,24 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="StartPage" >
+      <Stack.Screen name="StartPage">
+          {(props) => (
+            <StartPage {...props} userAuth={userAuth} userId={userId} />
+          )}
+        </Stack.Screen>
+        
+        <Stack.Screen name="Login">
+          {(props) => <Login {...props} userAuth={userAuth} userId={userId} />}
+        </Stack.Screen>
+        
+        <Stack.Screen name="Home">
+          {(props) => <Home {...props} userAuth={userAuth} userId={userId} />}
+        </Stack.Screen>
         <Stack.Screen name="Complete">
           {(props) => (
             <Complete {...props} userAuth={userAuth} userId={userId} />
           )}
-        </Stack.Screen>
-        <Stack.Screen name="Login">
-          {(props) => <Login {...props} userAuth={userAuth} userId={userId} />}
-        </Stack.Screen>
-        <Stack.Screen name="Home">
-          {(props) => <Home {...props} userAuth={userAuth} userId={userId} />}
         </Stack.Screen>
         <Stack.Screen name="Profile">
           {(props) => (
