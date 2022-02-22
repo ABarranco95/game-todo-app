@@ -4,34 +4,59 @@ const styles= StyleSheet.create({
   container:{
     flex:1,
     justifyContent:'center',
-    alignItems:"center",
-    marginTop: 40,
+    alignItems:'center',
+   backgroundColor: "#577555" ,
+   marginTop:0
+    
   },
   textInput: {
-    width: 250,
-    height: 35,
-    marginLeft: 40,
+    width: 220,
+    height: 45,
+    marginRight: 20,
     borderColor:"black",
     borderWidth:2,
     borderRadius:10, 
-    margin:5, 
-    paddingLeft:5
+    // margin:5, 
+    paddingLeft:5,
+     marginTop:-259,
+     marginBottom:168,
+    color:'#000',
+    backgroundColor: '#fff',
+    justifyContent:'center',
+    alignItems:'flex-start',
+    fontSize:20
+
+    
 
   },
+  emailInput:{
+    
+  },
   login: {
-    marginTop: 40,
-    marginLeft: 40,
-    width: 90,
-    backgroundColor: '#4a3806',
-    height: 35,
+     marginTop: -200,
+     marginRight: 30,
+    width: 150,
+  
+    backgroundColor: '#fff',
+    height: 40,
     textAlign: 'center',
-    borderRadius: 30,
+    borderRadius: 10,
+    justifyContent:"center",
+    alignItems:'center',
+    flexDirection:'row',
+    paddingBottom:10
   },
   text: {
-    color: 'white',
+    color:'#000',
     textAlign: 'center',
     paddingTop: 10,
   },
+  imgBgd:{
+    width:300,
+    height:470,
+    zIndex:-1,
+    marginTop:-200
+  }
 
 })
 export default styles;

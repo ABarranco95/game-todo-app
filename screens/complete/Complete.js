@@ -73,7 +73,7 @@ const Complete = (props) => {
 
     return (
       <View>
-        <br />
+      
         <Text>{item.post}</Text>
         {/* <Pressable onPress={() => handleReverse(item.id)}>
           <Text>Undo Complete</Text>
@@ -81,7 +81,7 @@ const Complete = (props) => {
         <Pressable onPress={() => handleIncomplete(item.postId)}>
           <Text>Mark as incomplete</Text>
         </Pressable>
-        <br />
+      
       </View>
     );
   };

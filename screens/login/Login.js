@@ -7,7 +7,10 @@ import {
   TouchableOpacity,
   Pressable,
   SafeAreaView,
+  Button,
+  ImageBackground, Image
 } from "react-native";
+import { BackgroundImage } from "react-native-elements/dist/config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {
@@ -21,6 +24,9 @@ import {
   remove,
 } from "firebase/database";
 import styles from "./styles";
+// import Login from './Login';
+// import { BackgroundImage } from "react-native-elements/dist/config";
+
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -31,13 +37,17 @@ const Login = (props) => {
 
   const register = () => {
     createUserWithEmailAndPassword(props.userAuth, email, password);
+    setToggleRegister(true);
   };
 
   const login = () => {
     signInWithEmailAndPassword(props.userAuth, email, password);
+    setToggleRegister(false);
   };
 
   useEffect(() => {
+    // if (props.userId ==="") {
+    //   props.navigation.navigate("Login");
     if (props.userId !== "") {
       props.navigation.navigate("Home");
     } else {
@@ -47,14 +57,18 @@ const Login = (props) => {
   }, [props.userId]);
 
   return (
-    <View>
-      <View style={styles.container}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-        />
+    <View style={styles.container}>
+       <BackgroundImage 
+        style={styles.imgBgd}
+        source={
+          require( '../../assets/Loginimg2.png')
+        }
+        
+      > 
+       </BackgroundImage>
+      <View>
+     
+       
         <TextInput
           style={styles.textInput}
           placeholder="password"
@@ -62,22 +76,42 @@ const Login = (props) => {
           onChangeText={setPassword}
           //  secureTextEntry
         />
+         <TextInput
+          style={styles.textInput}
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+        />
 
-        {toggleRegister ? (
-          <TouchableOpacity style={styles.login} onPress={register}>
-            <Text style={styles.text}>Register</Text>
-          </TouchableOpacity>
+        {/* {toggleRegister ? (
+         <TouchableOpacity style={styles.login} onPress={login}>
+         <Text style={styles.text}>Login</Text>
+       </TouchableOpacity>
         ) : (
-          <TouchableOpacity style={styles.login} onPress={login}>
-            <Text style={styles.text}>Login</Text>
-          </TouchableOpacity>
+          
+           <TouchableOpacity style={styles.login} onPress={register}>
+           <Text style={styles.text}>Register</Text>
+         </TouchableOpacity>
         )}
-        <br />
-        <br />
-        <Pressable onPress={() => setToggleRegister(!toggleRegister)}>
-          <Text>Register For Account</Text>
-        </Pressable>
+       
+        <TouchableOpacity title="Register"onPress={() => setToggleRegister(!toggleRegister)}><Text>Do you have account?</Text></TouchableOpacity>
+       */}
       </View>
+      <View style={styles.login}>
+     
+        <TouchableOpacity  onPress={register}>
+        <Text style={styles.text}>Register / </Text>
+      </TouchableOpacity>
+      
+      
+      <TouchableOpacity  onPress={login}>
+        <Text style={styles.text}>Login</Text>
+      </TouchableOpacity>
+
+
+      </View>
+      
+     
     </View>
   );
 };
