@@ -27,23 +27,6 @@ const styles = StyleSheet.create({
     //  marginLeft:250
   },
   btn: {
-    // width: 120,
-
-    // // marginLeft: 40,
-
-    // // borderColor:"black",
-    // // borderWidth:2,
-    // borderRadius:15,
-    // // marginLeft: 20,
-    // padding:10 ,
-    // textAlign:'center',
-    // marginTop:-150,
-    // marginBottom:80,
-    // color:'#000',
-    // backgroundColor: '#fff',
-    // zIndex:100
-    /* Button */
-
     position: "absolute",
     width: 240.98,
     height: 68,
@@ -53,9 +36,9 @@ const styles = StyleSheet.create({
   btnText: {
     position: "absolute",
     width: 207.58,
-    height: 27.44,
+    height: 26.44,
     left: 113.09,
-    top: 748.7,
+    top: 730.7,
 
     // fontFamily: 'Raleway',
     // font-style: normal
