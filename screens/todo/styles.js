@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-  
+    position: "relative",
   },
   backDrop: {
      position: "absolute",
@@ -39,36 +39,48 @@ const styles = StyleSheet.create({
   input: {
     paddingVertical: 15,
     paddingHorizontal: 15,
-    backgroundColor: "#fff",
+    backgroundColor: "#679d63",
     borderRadius: 60,
-    borderColor: "#c0c0c0",
-    borderWidth: 1,
+    borderColor: "#679d63",
+    borderWidth: 3,
     width: 320,
     justifyContent: "center",
     alignItems: "center",
+    color:"#fff",
+    
   },
+  addText:{
+    color: "#fff",
+    fontSize: 30,
+  } ,
+
+
   addWrapper: {
     width: 55,
     height: 55,
-    backgroundColor: "#fff",
+    backgroundColor: "#679D63",
     borderRadius: 50,
     justifyContent: "center",
     alignItems: "center",
-    borderColor: "#c0c0c0",
-    borderWidth: 1,
+    borderColor: "#679D63",
+    borderWidth: 3,
+    right: -5,
   },
 
  
   item: {
     backgroundColor: "#fff",
     left: 25,
-    padding: 15,
+    padding: 5,
     borderRadius: 10,
+    borderColor: "#8f00f0",
+    borderWidth: 3,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     marginBottom: 10,
     width: 300
+
   },
   itemLeft: {
     flexDirection: "row",
@@ -78,7 +90,7 @@ const styles = StyleSheet.create({
   square: {
     width: 24,
     height: 24,
-    backgroundColor: "grey",
+    backgroundColor: "#8f00ff",
     opacity: 0.4,
     borderRadius: 5,
     marginRight: 15,

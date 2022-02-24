@@ -108,7 +108,8 @@ const Todo = (props) => {
       >  
         <TextInput
           style={styles.input}
-          placeholder={"Write a task"}
+          placeholder={"Write a ToDo"}
+          placeholderTextColor={'#fff'}
           value={task}
           onChangeText={(text) => setTask(text)}
           onKeyPress={handleKeypress}
@@ -121,7 +122,7 @@ const Todo = (props) => {
         </TouchableOpacity>
       </KeyboardAvoidingView>
 
-      <View style={{ width: 350, height: 450 }}>
+      <View style={{ width: 350, height: 250 }}>
         <FlatList
           data={props.allTasks}
           renderItem={({ item, key }) => (
