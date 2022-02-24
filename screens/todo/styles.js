@@ -1,13 +1,21 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  // Background Image
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    width: "70%",
-
+  
   },
+  backDrop: {
+     position: "absolute",
+     width: 428,
+     height: 926,
+     left: 0,
+     top: 0,
+  },
+
   taskWrapper: {
     paddingTop: 80,
     paddingHorizontal: 10,
@@ -21,7 +29,8 @@ const styles = StyleSheet.create({
   },
   writeTaskWrapper: {
     position: "absolute",
-    bottom: 60,
+    right: 0, 
+    bottom: 50,
     width: "100%",
     flexDirection: "row",
     justifyContent: "center",
@@ -34,7 +43,7 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     borderColor: "#c0c0c0",
     borderWidth: 1,
-    width: 300,
+    width: 320,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -49,15 +58,17 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
 
+ 
   item: {
     backgroundColor: "#fff",
+    left: 25,
     padding: 15,
     borderRadius: 10,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-
     marginBottom: 10,
+    width: 300
   },
   itemLeft: {
     flexDirection: "row",
@@ -72,9 +83,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginRight: 15,
   },
-  itemText: {
-    maxWidth: "80%",
-  },
+  
   circular: {
     width: 12,
     height: 12,
@@ -82,5 +91,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
   },
+ 
 });
 export default styles;
