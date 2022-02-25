@@ -1,13 +1,21 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  // Background Image
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    width: "70%",
-
+    position: "relative",
   },
+  backDrop: {
+     position: "absolute",
+     width: 428,
+     height: 926,
+     left: 0,
+     top: 0,
+  },
+
   taskWrapper: {
     paddingTop: 80,
     paddingHorizontal: 10,
@@ -21,7 +29,8 @@ const styles = StyleSheet.create({
   },
   writeTaskWrapper: {
     position: "absolute",
-    bottom: 60,
+    right: 0, 
+    bottom: 50,
     width: "100%",
     flexDirection: "row",
     justifyContent: "center",
@@ -30,34 +39,48 @@ const styles = StyleSheet.create({
   input: {
     paddingVertical: 15,
     paddingHorizontal: 15,
-    backgroundColor: "#fff",
+    backgroundColor: "#679d63",
     borderRadius: 60,
-    borderColor: "#c0c0c0",
-    borderWidth: 1,
-    width: 300,
+    borderColor: "#679d63",
+    borderWidth: 3,
+    width: 320,
     justifyContent: "center",
     alignItems: "center",
+    color:"#fff",
+    
   },
+  addText:{
+    color: "#fff",
+    fontSize: 30,
+  } ,
+
+
   addWrapper: {
     width: 55,
     height: 55,
-    backgroundColor: "#fff",
+    backgroundColor: "#679D63",
     borderRadius: 50,
     justifyContent: "center",
     alignItems: "center",
-    borderColor: "#c0c0c0",
-    borderWidth: 1,
+    borderColor: "#679D63",
+    borderWidth: 3,
+    right: -5,
   },
 
+ 
   item: {
     backgroundColor: "#fff",
-    padding: 15,
+    left: 25,
+    padding: 5,
     borderRadius: 10,
+    borderColor: "#8f00f0",
+    borderWidth: 3,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-
     marginBottom: 10,
+    width: 300
+
   },
   itemLeft: {
     flexDirection: "row",
@@ -67,14 +90,12 @@ const styles = StyleSheet.create({
   square: {
     width: 24,
     height: 24,
-    backgroundColor: "grey",
+    backgroundColor: "#8f00ff",
     opacity: 0.4,
     borderRadius: 5,
     marginRight: 15,
   },
-  itemText: {
-    maxWidth: "80%",
-  },
+  
   circular: {
     width: 12,
     height: 12,
@@ -82,5 +103,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
   },
+ 
 });
 export default styles;

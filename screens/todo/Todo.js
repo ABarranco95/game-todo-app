@@ -11,6 +11,7 @@ import {
   Platform,
   SafeAreaView,
   Pressable,
+  Image,
 } from "react-native";
 import styles from "./styles";
 import {
@@ -97,13 +98,18 @@ const Todo = (props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView
+      <Image
+        style={styles.backDrop}
+        source={require("../../assets/my-todos.png")}
+      /> 
+       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}
-      >
+      >  
         <TextInput
           style={styles.input}
-          placeholder={"Write a task"}
+          placeholder={"Write a ToDo"}
+          placeholderTextColor={'#fff'}
           value={task}
           onChangeText={(text) => setTask(text)}
           onKeyPress={handleKeypress}
@@ -116,9 +122,8 @@ const Todo = (props) => {
         </TouchableOpacity>
       </KeyboardAvoidingView>
 
-      <View style={{ width: 350, height: 450 }}>
+      <View style={{ width: 350, height: 250 }}>
         <FlatList
-       
           data={props.allTasks}
           renderItem={({ item, key }) => (
             <Task item={item} db={db} userId={props.userId} />
