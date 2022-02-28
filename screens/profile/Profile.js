@@ -69,6 +69,7 @@ const Profile = (props) => {
     </Text>
     
       <Modal
+      style={styles.modal}
         animationType="slide"
         transparent={true}
         visible={modalVisible}

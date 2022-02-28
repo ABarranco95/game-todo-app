@@ -42,16 +42,19 @@ const styles= StyleSheet.create({
         fontSize:20
       },
       modalView: {
-        margin: 20,
-        backgroundColor: "white",
+        marginTop: 60,
+        width:320,
+        height:320,
+        marginLeft:18,
+        backgroundColor: "#9675f8",
         borderRadius: 20,
         padding: 35,
         alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2
-        },
+        // shadowColor: "#000",
+        // shadowOffset: {
+        //   width: 0,
+        //   height: 2
+        // },
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5
@@ -60,6 +63,12 @@ const styles= StyleSheet.create({
         borderRadius: 20,
         padding: 10,
         elevation: 2
+      },
+      modal:{
+        // width:200,
+        // height:150,
+        marginTop:150
+
       },
       button2: {
         borderRadius: 20,
@@ -84,20 +93,22 @@ const styles= StyleSheet.create({
         
       },
       buttonClose: {
-        backgroundColor: "#9675f8",
+        backgroundColor: "#E6712C",
+        marginTop:10
       },
       textStyle: {
         color: "white",
        
         textAlign: "center",
         fontSize:20,
-        backgroundColor: "#9675f8",
+        // backgroundColor: "",
         
       },
       modalText: {
         marginBottom: 15,
         textAlign: "center",
-        fontSize:20
+        fontSize:20,
+        color:"white"
       },
       nameTitle:{
         top:250,

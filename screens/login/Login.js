@@ -59,8 +59,8 @@ const Login = (props) => {
   return (
     <View style={styles.container}>
       <Image
-        style={styles.imgBgd}
-        source={require("../../assets/underground-cave-login.png")}
+        // style={styles.imgBgd}
+        source={require("../../assets/Loginimg2.png")}
       />
       <View style={styles.loginContainer}>
         {toggleRegister ? (
