@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   items: {
     marginTop: 60,
   },
+  
   writeTaskWrapper: {
     position: "absolute",
     right: 0, 
@@ -90,15 +91,15 @@ const styles = StyleSheet.create({
     // justifyContent: "space-between",
     marginBottom: 10,
     width: 350,
-    
-
   },
   itemLeft: {
     flexDirection: "row",
     alignItems: "center",
     // flexWrap: "wrap",
     width: 195,
+
   },
+  
   square: {
     width: 24,
     height: 24,

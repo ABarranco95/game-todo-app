@@ -59,8 +59,8 @@ const Login = (props) => {
   return (
     <View style={styles.container}>
       <Image
-        style={styles.imgBgd}
-        source={require("../../assets/underground-cave-login.png")}
+        // style={styles.imgBgd}
+        source={require("../../assets/Loginimg2.png")}
       />
       <View style={styles.loginContainer}>
         {toggleRegister ? (
@@ -87,11 +87,11 @@ const Login = (props) => {
               <Text style={styles.btnText}>Let's Go</Text>
             </TouchableOpacity>
             <TouchableOpacity
-                style={styles.registerBtn}
-                onPress={() => setToggleRegister(!toggleRegister)}
-              >
-                <Text>Need to login?</Text>
-              </TouchableOpacity>
+              style={styles.registerBtn}
+              onPress={() => setToggleRegister(!toggleRegister)}
+            >
+              <Text>Need to login?</Text>
+            </TouchableOpacity>
           </View>
         ) : (
           <View>

@@ -91,7 +91,10 @@ const Task = ({ item, db, userId }) => {
           <SafeAreaView style={styles.item}>
             <View style={styles.itemLeft}>
               <View style={styles.square}></View>
-              <Text style={styles.itemText}>{item.post}</Text>
+              
+    <Text style={styles.itemText}>{item.post}</Text>
+              
+          
             </View>
 
             <CheckBox
