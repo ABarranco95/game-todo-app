@@ -17,10 +17,6 @@ import styles from "./styles";
 
 
 
-
-
-
-
 const Profile = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -117,6 +113,51 @@ const Profile = (props) => {
         <Ionicons name="arrow-back-circle-sharp" size={44} color="black" />
       </Pressable>
       </BackgroundImage>
+
+        setFirstName(returnedItems.firstName);
+        setLastName(returnedItems.lastName);
+      } else {
+        console.log("value is empty");
+        setFirstName("");
+        setLastName("");
+      }
+    });
+  }, [toggleEdit]);
+
+  console.log(toggleEdit);
+  return (
+    <View style={styles.container}>
+      {toggleEdit ? (
+        <View>
+          <TextInput
+            style={styles.textInput}
+            placeholder="First Name"
+            value={firstName}
+            onChangeText={setFirstName}
+            //  secureTextEntry
+            // (text) => setTask(text)
+          />
+          <TextInput
+            style={styles.textInput}
+            placeholder="Last Name"
+            value={lastName}
+            onChangeText={setLastName}
+            //  secureTextEntry
+          />
+          <TouchableOpacity onPress={onSubmit}>
+            <Text>Submit</Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <View>
+          <Text>
+            Hello {firstName} {lastName}!
+          </Text>
+          <TouchableOpacity onPress={() => setToggleEdit(!toggleEdit)}>
+            <Text style={styles.editBtnText}>Edit Name</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };
