@@ -87,11 +87,11 @@ const Login = (props) => {
               <Text style={styles.btnText}>Let's Go</Text>
             </TouchableOpacity>
             <TouchableOpacity
-                style={styles.registerBtn}
-                onPress={() => setToggleRegister(!toggleRegister)}
-              >
-                <Text>Need to login?</Text>
-              </TouchableOpacity>
+              style={styles.registerBtn}
+              onPress={() => setToggleRegister(!toggleRegister)}
+            >
+              <Text>Need to login?</Text>
+            </TouchableOpacity>
           </View>
         ) : (
           <View>
