@@ -37,7 +37,7 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Profile">
+      <Stack.Navigator initialRouteName="Complete">
         <Stack.Screen
           name="landingPage"
           options={{
