@@ -78,7 +78,7 @@ const Task = ({ item, db, userId }) => {
   }, []);
 
   return (
-    <View>
+    <View style={styles.taskContainer}>
       {toggleEdit ? (
         <TextInput
           style={styles.item}

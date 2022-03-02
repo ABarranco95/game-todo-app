@@ -16,6 +16,11 @@ const styles = StyleSheet.create({
      top: 0,
   },
 
+  // taskContainer: {
+  //   backgroundColor: "red",
+  //   width: 400,
+  // },
+
   taskWrapper: {
     paddingTop: 80,
     paddingHorizontal: 10,
@@ -67,25 +72,32 @@ const styles = StyleSheet.create({
     right: -5,
   },
 
+  itemText: {
+  //  width: 200,
+   marginRight: 60,
+  },
  
   item: {
     backgroundColor: "#fff",
-    left: 25,
-    padding: 5,
-    borderRadius: 10,
+    // left: 1,
+    // padding: ,
+    borderRadius: 5,
     borderColor: "#8f00f0",
     borderWidth: 3,
     flexDirection: "row",
+    // flexWrap: "wrap",
     alignItems: "center",
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
     marginBottom: 10,
-    width: 300
+    width: 350,
+    
 
   },
   itemLeft: {
     flexDirection: "row",
     alignItems: "center",
-    flexWrap: "wrap",
+    // flexWrap: "wrap",
+    width: 195,
   },
   square: {
     width: 24,
@@ -94,6 +106,7 @@ const styles = StyleSheet.create({
     opacity: 0.4,
     borderRadius: 5,
     marginRight: 15,
+    marginLeft: 10,
   },
   
   circular: {
