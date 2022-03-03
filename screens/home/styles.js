@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   },
   signOutButton: {
     position: "absolute",
-    bottom: 810,
+    bottom: 775,
     // right: 130,
     left: 60,
   },

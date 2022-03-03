@@ -15,7 +15,15 @@ const styles = StyleSheet.create({
      left: 0,
      top: 0,
   },
-
+  backButton: {
+      position: "absolute",
+      top: 55,
+      left: 20,
+},  
+  backText: {
+    color: "white",
+    textDecorationLine: "underline",
+  },
   // taskContainer: {
   //   backgroundColor: "red",
   //   width: 400,

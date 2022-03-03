@@ -1,12 +1,4 @@
-import {
-  View,
-  Text,
-  FlatList,
-  Pressable,
-  SafeAreaView,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, FlatList, Pressable, SafeAreaView, Image, TouchableOpacity } from "react-native";
 import { BackgroundImage } from "react-native-elements/dist/config";
 
 import React, { useState, useEffect } from "react";
@@ -24,8 +16,9 @@ import {
 import styles from "./styles";
 import Score from "./Score";
 
-import { FontAwesome5 } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons'; 
+
 
 const Complete = (props) => {
   const [check, setCheck] = useState("");
@@ -86,50 +79,49 @@ const Complete = (props) => {
 
     return (
       <View style={styles.taskContainer}>
-        <FontAwesome5
-          name="dot-circle"
-          size={24}
-          color="green"
-          style={styles.dotCircle}
-        />
-        <View style={styles.itemPostContainer}>
-          <Text style={styles.taskPost}>{item.post}</Text>
-        </View>
 
+     
+                <FontAwesome5 name="dot-circle" size={24} color="green" style={styles.dotCircle} />
+        <View style={styles.itemPostContainer}>
+           <Text style={styles.taskPost}>{item.post}</Text>
+        </View>
+       
         {/* <Pressable onPress={() => handleReverse(item.id)}>
           <Text>Undo Complete</Text>
         </Pressable> */}
-        <TouchableOpacity onPress={() => handleIncomplete(item.postId)}>
+          <TouchableOpacity onPress={() => handleIncomplete(item.postId)} >
           <MaterialIcons name="remove-done" size={24} color="red" />
-        </TouchableOpacity>
+          </TouchableOpacity>     
+     
       </View>
     );
   };
 
+
   return (
     <View style={styles.container}>
+
       <BackgroundImage
         style={styles.scoreBgI}
-        source={require("../../assets/scoreClickedBG.png")}
+        source={
+          require('../../assets/scoreClickedBG.png')
+        }
       ></BackgroundImage>
-
+      
       <TouchableOpacity
         style={styles.backButton}
         onPress={() => props.navigation.goBack("Home")}
       >
-        <Text style={styles.backText}>Back</Text>
+        <Text style= {styles.backText}>Back</Text>
       </TouchableOpacity>
-
+      
+      
       <Score db={db} userId={props.userId} completedTasks={completedTasks} />
       <FlatList
+      
         data={completedTasks}
-        renderItem={({ item, index }) => (
-          <CompletedTask
-            item={item}
-            db={db}
-            userId={props.userId}
-            key={index}
-          />
+        renderItem={({ item }) => (
+          <CompletedTask  item={item} db={db} userId={props.userId} />
         )}
         keyExtractor={(item) => item.key}
       />

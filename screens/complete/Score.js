@@ -10,6 +10,8 @@ import {
   remove,
 } from "firebase/database";
 // import styles from "../login/styles";
+import { BackgroundImage } from "react-native-elements/dist/config";
+
 import styles from "./styles";
 
 const Score = ({ userId }) => {
@@ -62,17 +64,32 @@ const Score = ({ userId }) => {
     });
   }, []);
 
+
   return (
     <View style={styles.scoreContainer}>
-      <View style={styles.pointContainer}>
-        <Text style={styles.total}>Total Points: </Text>
-      </View>
+        <BackgroundImage
+        style={styles.imgGraphic}
+        source={
+          require('../../assets/MyScoreGraphic.png')
+        }
+      ></BackgroundImage>
+      
 
       <View style={styles.sideBySide}>
-        <Text style={styles.scorePoints}>{scoreCount}</Text>
-        <Text style={styles.points}>points</Text>
-        <Text>This is the high score: {highscore}</Text>
+        <View style={styles.pointContainer}>
+      <Text style={styles.total}>Total Points: </Text>   
+      <Text style={styles.highest}>Highest Score: </Text>  
+      <Text style={styles.highPoint}>{highscore}</Text>
+      <Text style={styles.Highestpoints}>points</Text>
       </View>
+      
+      </View>
+     <Text style={styles.scorePoints}>{scoreCount}</Text> 
+           <Text style={styles.points}>points</Text>
+           
+      
+
+      
     </View>
   );
 };
