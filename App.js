@@ -37,7 +37,7 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="landingPage">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="landingPage"
           options={{

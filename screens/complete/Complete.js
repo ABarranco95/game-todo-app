@@ -63,6 +63,7 @@ const Complete = (props) => {
     const [check, setCheck] = useState(false);
     const [reverseTask, setReverseTask] = useState(false);
     const [score, setScore] = useState();
+ 
 
     const scoreRef = ref(db, "score/" + userId);
 
@@ -115,7 +116,7 @@ const Complete = (props) => {
 
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => props.navigation.goBack("Home")}
+        onPress={() => props.navigation.navigate("Home")}
       >
         <Text style={styles.backText}>Back</Text>
       </TouchableOpacity>
