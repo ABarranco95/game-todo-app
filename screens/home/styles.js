@@ -144,5 +144,11 @@ const styles = StyleSheet.create({
     top: 40,
     right: 30,
   },
+  signOutButton: {
+    position: "absolute",
+    bottom: 810,
+    // right: 130,
+    left: 60,
+  },
 });
 export default styles;

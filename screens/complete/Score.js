@@ -35,6 +35,13 @@ const Score = ({ userId }) => {
 
   useEffect(() => {
     return onValue(highscoreRef, (snapshot) => {
+      console.log("my high score --> ", snapshot.val().highscore);
+      setHighscore(snapshot.val().highscore);
+    });
+  }, []);
+
+  useEffect(() => {
+    return onValue(highscoreRef, (snapshot) => {
       if (snapshot.val() === null) {
         set(highscoreRef, {
           highscore: scoreCount,
@@ -64,11 +71,8 @@ const Score = ({ userId }) => {
       <View style={styles.sideBySide}>
         <Text style={styles.scorePoints}>{scoreCount}</Text>
         <Text style={styles.points}>points</Text>
-        <Text style={styles.scorePoints}>{highscore}</Text>
+        <Text>This is the high score: {highscore}</Text>
       </View>
-      {/* <View style={styles.sideBySide}>
-        
-      </View> */}
     </View>
   );
 };

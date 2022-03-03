@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { getDatabase, onValue, set, ref } from "firebase/database";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 import styles from "./styles";
 
@@ -34,7 +35,15 @@ const Home = (props) => {
         style={styles.userIcon}
         onPress={() => props.navigation.navigate("Profile")}
       >
-        <FontAwesome5 name="user-circle" size={44} color="black" />
+        <FontAwesome5 name="user-circle" size={40} color="black" />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={signOut}>
+        <AntDesign
+          name="logout"
+          size={35}
+          color="black"
+          style={styles.signOutButton}
+        />
       </TouchableOpacity>
       <Image style={styles.dates} source={require("../../assets/dates.png")} />
 
@@ -73,10 +82,6 @@ const Home = (props) => {
 
       <TouchableOpacity onPress={() => props.navigation.navigate("Complete")}>
         <Text style={styles.btnStyle}>Completed Todos</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={signOut}>
-        <Text style={styles.btnStyle}>Sign Out</Text>
       </TouchableOpacity> */}
     </View>
   );
