@@ -76,18 +76,14 @@ const Todo = (props) => {
 
   useEffect(() => {
     return onValue(scoreRef, (snapshot) => {
-      
       if (snapshot.val() === null) {
         set(scoreRef, {
           score: 0,
         });
       } else {
-        
       }
     });
   }, []);
-
-
 
   const handleKeypress = (e) => {
     //it triggers by pressing the enter key
@@ -101,15 +97,15 @@ const Todo = (props) => {
       <Image
         style={styles.backDrop}
         source={require("../../assets/my-todos.png")}
-      /> 
-       <KeyboardAvoidingView
+      />
+      <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}
-      >  
+      >
         <TextInput
           style={styles.input}
           placeholder={"Write a ToDo"}
-          placeholderTextColor={'#fff'}
+          placeholderTextColor={"#fff"}
           value={task}
           onChangeText={(text) => setTask(text)}
           onKeyPress={handleKeypress}
@@ -125,9 +121,10 @@ const Todo = (props) => {
       <View style={{ width: 350, height: 250 }}>
         <FlatList
           data={props.allTasks}
-          renderItem={({ item, key }) => (
-            <Task item={item} db={db} userId={props.userId} />
+          renderItem={({ item, index }) => (
+            <Task item={item} db={db} userId={props.userId} key={index} />
           )}
+          keyExtractor={(item) => item.key}
         />
       </View>
     </SafeAreaView>

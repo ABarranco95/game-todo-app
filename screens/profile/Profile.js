@@ -38,13 +38,17 @@ const Profile = (props) => {
   }/${current.getFullYear()}`;
 
   const onSubmit = () => {
-    set(profileRef, {
-      firstName: firstName,
-      lastName: lastName,
-    }).catch((err) => console.log(err));
-    setFirstName("");
-    setLastName("");
-    setModalVisible(!modalVisible);
+    if (firstName === "") {
+      Alert.alert("Please enter your name.");
+    } else {
+      set(profileRef, {
+        firstName: firstName,
+        lastName: lastName,
+      }).catch((err) => console.log(err));
+      setFirstName("");
+      setLastName("");
+      setModalVisible(!modalVisible);
+    }
   };
   useEffect(() => {
     const profileRef = ref(db, "profiles/" + props.userId);

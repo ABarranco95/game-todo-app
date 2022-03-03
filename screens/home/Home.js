@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { getDatabase, onValue, set, ref } from "firebase/database";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 import styles from "./styles";
 
@@ -29,6 +30,12 @@ const Home = (props) => {
         style={styles.monthArrow}
         source={require("../../assets/month-arrow.png")}
       />
+      <TouchableOpacity
+        style={styles.userIcon}
+        onPress={() => props.navigation.navigate("Profile")}
+      >
+        <FontAwesome5 name="user-circle" size={44} color="black" />
+      </TouchableOpacity>
       <Image style={styles.dates} source={require("../../assets/dates.png")} />
 
       <Image
@@ -43,15 +50,21 @@ const Home = (props) => {
       </TouchableOpacity>
       <Text style={styles.todosTitle}>My ToDo's</Text>
 
-      <TouchableOpacity style={styles.finishBtn}>
+      <TouchableOpacity
+        style={styles.finishBtn}
+        onPress={() => props.navigation.navigate("Todo")}
+      >
         <Text style={styles.finishText}>Finish Task</Text>
       </TouchableOpacity>
       <Image
         style={styles.todosFlag}
         source={require("../../assets/todos-flag.png")}
       />
-      <TouchableOpacity style={styles.notesBtn}>
-        <Text style={styles.notesText}>Add Notes</Text>
+      <TouchableOpacity
+        style={styles.notesBtn}
+        onPress={() => props.navigation.navigate("Complete")}
+      >
+        <Text style={styles.notesText}>Completed</Text>
       </TouchableOpacity>
 
       {/* <TouchableOpacity onPress={() => props.navigation.navigate("Profile")}>

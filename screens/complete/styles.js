@@ -23,13 +23,13 @@ const styles = StyleSheet.create({
   scorePoints: {
     fontSize: 99,
     color: "#DF5C0E",
-    fontFamily: "Raleway",
+    // fontFamily: "Raleway",
 
   },
   total: {
     fontSize: 25,
     color: "#5C5C5C",
-    fontFamily: "Raleway",
+    // fontFamily: "Raleway",
 
   },
   sideBySide: {

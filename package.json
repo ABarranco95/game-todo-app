@@ -18,11 +18,13 @@
     "react": "17.0.1",
     "react-datepicker": "^4.6.0",
     "react-native": "0.64.3",
+    "react-native-anchor-carousel": "^4.0.1",
     "react-native-animated-linear-gradient": "^1.2.2",
     "react-native-drop-shadow": "^0.0.4",
     "react-native-elements": "^3.4.2",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.8.0",
+    "react-native-snap-carousel": "^3.9.1",
     "react-native-web": "0.17.1"
   },
   "devDependencies": {

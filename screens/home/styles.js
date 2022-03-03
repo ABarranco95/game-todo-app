@@ -139,5 +139,10 @@ const styles = StyleSheet.create({
 
     color: "#fff",
   },
+  userIcon: {
+    position: "absolute",
+    top: 40,
+    right: 30,
+  },
 });
 export default styles;
