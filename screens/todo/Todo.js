@@ -98,8 +98,8 @@ const Todo = (props) => {
         style={styles.backDrop}
         source={require("../../assets/my-todos.png")}
       />
-      <TouchableOpacity onPress={() => props.navigation.goBack("Home")}>
-        <Text>Back</Text>
+      <TouchableOpacity onPress={() => props.navigation.goBack("Home")} style={styles.backButton}>
+        <Text style={styles.backText}>Back</Text>
       </TouchableOpacity>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}

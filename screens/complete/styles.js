@@ -9,27 +9,56 @@ const styles = StyleSheet.create({
   },
   scoreContainer: {
     backgroundColor: "#FFFFFF",
-    marginTop:90,
-    marginBottom:10,
+    
+    marginTop:70,
+    marginBottom:30,
     marginLeft: 20,
-    width: 345,
+    width: 350,
     height: 276,
     borderRadius: 14,
   },
   pointContainer: {
-    marginLeft: 60,
-    paddingTop: 80,
+    // marginLeft: 60,
+    // paddingTop: 80,
+    marginTop: -200,
   },
   scorePoints: {
-    fontSize: 99,
+    fontSize: 70,
     color: "#DF5C0E",
-    // fontFamily: "Raleway",
+    fontFamily: "Raleway",
+    marginTop: -282,
+    marginLeft: 10,
 
   },
-  total: {
-    fontSize: 25,
+  highest: {
+    fontSize: 20,
     color: "#5C5C5C",
-    // fontFamily: "Raleway",
+    fontFamily: "Raleway",
+    marginLeft: 140,
+    marginTop: -25.5,
+   
+  },
+  highPoint: {
+    fontSize: 70,
+    color: "#DF5C0E",
+    fontFamily: "Raleway",
+    marginLeft: 140,
+  },
+  Highestpoints: {
+    color: "#2D1A9C",
+    fontSize: 19,
+    // paddingTop: 75,
+    marginLeft: 230,
+    marginTop: -45,
+  
+  },
+  total: {
+    fontSize: 20,
+    color: "#5C5C5C",
+    fontFamily: "Raleway",
+    marginLeft: -50,
+    marginTop: -50,
+   
 
   },
   sideBySide: {
@@ -41,8 +70,9 @@ const styles = StyleSheet.create({
   points: {
     color: "#2D1A9C",
     fontSize: 19,
-    paddingTop: 75,
-    marginLeft: 10,
+    // paddingTop: 75,
+    marginLeft: 100,
+    marginTop: -50,
   },
   taskPost: {
     color: "#696969",
@@ -54,7 +84,7 @@ const styles = StyleSheet.create({
   itemPostContainer: {
     width: 250, 
   },
-  
+ 
   taskContainer: {
     marginLeft: 20,
     marginRight: 20,
@@ -152,12 +182,17 @@ const styles = StyleSheet.create({
     top: 0,
   },
   backButton: {
-    marginTop: 35,
+    marginTop: 55,
     marginLeft: 15,
   },
   backText: {
     color: "white",
     textDecorationLine: "underline",
+  },
+  imgGraphic: {
+    width: 350,
+    height: 290,
+   
   },
 });
 export default styles;
