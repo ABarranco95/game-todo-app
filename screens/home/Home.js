@@ -35,14 +35,13 @@ const Home = (props) => {
         style={styles.userIcon}
         onPress={() => props.navigation.navigate("Profile")}
       >
-        <FontAwesome5 name="user-circle" size={40} color="black" />
+        <FontAwesome5 name="user-circle" size={30} color="black" />
       </TouchableOpacity>
-      <TouchableOpacity onPress={signOut}>
+      <TouchableOpacity onPress={signOut} style={styles.signOutButton}>
         <AntDesign
           name="logout"
-          size={35}
+          size={30}
           color="black"
-          style={styles.signOutButton}
         />
       </TouchableOpacity>
       <Image style={styles.dates} source={require("../../assets/dates.png")} />

@@ -141,14 +141,15 @@ const styles = StyleSheet.create({
   },
   userIcon: {
     position: "absolute",
-    top: 40,
+    top: 60,
     right: 30,
   },
   signOutButton: {
     position: "absolute",
-    bottom: 775,
+    bottom: 690,
     // right: 130,
-    left: 60,
+    left: 280,
   },
+  
 });
 export default styles;
